@@ -1,0 +1,33 @@
+program TesteBeta
+let
+const pi ~ 3;
+var idade : int;
+var ano : int;
+var nome : string
+in
+
+begin
+
+	ano := 2026;
+
+	escreva(mensagem1, mensagem2);
+	leia(idade);
+
+	escreva(mensagem1, mensagem2);
+	leia (ano);
+
+	if (ano - idade > 2000) then
+		begin
+		escreva(mensagem1)
+	end
+	else
+	escreva(mensagem2);
+
+	while sim do
+	begin 
+		executar();
+		while nao do
+		nada()
+	end
+
+end
