@@ -587,7 +587,9 @@ public class MiniTriangle implements MiniTriangleConstants {
 */
   final public String TypeDenoter() throws ParseException {
         Token token;
-    token = jj_consume_token(IDENTIFIER);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case INTEGER:
+      token = jj_consume_token(INTEGER);
                         contadorIdentificadores++;
 
                         if (!listaIdentificadores.contains(token.image)) {
@@ -595,6 +597,42 @@ public class MiniTriangle implements MiniTriangleConstants {
                         }
 
                         {if (true) return token.image;}
+      break;
+    case STRING:
+      token = jj_consume_token(STRING);
+                        contadorIdentificadores++;
+
+                        if (!listaIdentificadores.contains(token.image)) {
+                                listaIdentificadores.add(token.image);
+                        }
+
+                        {if (true) return token.image;}
+      break;
+    case FLOAT:
+      token = jj_consume_token(FLOAT);
+                        contadorIdentificadores++;
+
+                        if (!listaIdentificadores.contains(token.image)) {
+                                listaIdentificadores.add(token.image);
+                        }
+
+                        {if (true) return token.image;}
+      break;
+    case BOOLEAN:
+      token = jj_consume_token(BOOLEAN);
+                        contadorIdentificadores++;
+
+                        if (!listaIdentificadores.contains(token.image)) {
+                                listaIdentificadores.add(token.image);
+                        }
+
+                        {if (true) return token.image;}
+      break;
+    default:
+      jj_la1[12] = jj_gen;
+      jj_consume_token(-1);
+      throw new ParseException();
+    }
     throw new Error("Missing return statement in function");
   }
 
@@ -611,7 +649,7 @@ public class MiniTriangle implements MiniTriangleConstants {
         ;
         break;
       default:
-        jj_la1[12] = jj_gen;
+        jj_la1[13] = jj_gen;
         break label_7;
       }
       jj_consume_token(DIGIT);
@@ -630,7 +668,7 @@ public class MiniTriangle implements MiniTriangleConstants {
                         contadorAssignmentOperator++;
       break;
     default:
-      jj_la1[13] = jj_gen;
+      jj_la1[14] = jj_gen;
       jj_consume_token(-1);
       throw new ParseException();
     }
@@ -679,7 +717,7 @@ public class MiniTriangle implements MiniTriangleConstants {
                 temOperator = true;
       break;
     default:
-      jj_la1[14] = jj_gen;
+      jj_la1[15] = jj_gen;
       jj_consume_token(-1);
       throw new ParseException();
     }
@@ -692,14 +730,14 @@ public class MiniTriangle implements MiniTriangleConstants {
     finally { jj_save(0, xla); }
   }
 
-  private boolean jj_3_1() {
-    if (jj_scan_token(IDENTIFIER)) return true;
-    if (jj_3R_8()) return true;
+  private boolean jj_3R_10() {
+    if (jj_scan_token(TILDE)) return true;
     return false;
   }
 
-  private boolean jj_3R_10() {
-    if (jj_scan_token(TILDE)) return true;
+  private boolean jj_3_1() {
+    if (jj_scan_token(IDENTIFIER)) return true;
+    if (jj_3R_8()) return true;
     return false;
   }
 
@@ -732,7 +770,7 @@ public class MiniTriangle implements MiniTriangleConstants {
   private boolean jj_lookingAhead = false;
   private boolean jj_semLA;
   private int jj_gen;
-  final private int[] jj_la1 = new int[15];
+  final private int[] jj_la1 = new int[16];
   static private int[] jj_la1_0;
   static private int[] jj_la1_1;
   static {
@@ -740,10 +778,10 @@ public class MiniTriangle implements MiniTriangleConstants {
       jj_la1_init_1();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {0x40,0x100000,0x200000,0xe5c40000,0x26080,0xe5c00000,0xe5c00000,0xe5c40000,0xe5c00000,0x0,0x100000,0x10100,0x0,0x18000000,0xe5c00000,};
+      jj_la1_0 = new int[] {0x40,0x1000000,0x2000000,0x5c400000,0x26080,0x5c000000,0x5c000000,0x5c400000,0x5c000000,0x0,0x1000000,0x10100,0x3c0000,0x0,0x80000000,0x5c000000,};
    }
    private static void jj_la1_init_1() {
-      jj_la1_1 = new int[] {0x0,0x0,0x0,0x7,0x2,0x1,0x1,0x7,0x1,0x6,0x0,0x0,0x4,0x0,0x1,};
+      jj_la1_1 = new int[] {0x0,0x0,0x0,0x7e,0x20,0x1e,0x1e,0x7e,0x1e,0x60,0x0,0x0,0x0,0x40,0x1,0x1e,};
    }
   final private JJCalls[] jj_2_rtns = new JJCalls[1];
   private boolean jj_rescan = false;
@@ -760,7 +798,7 @@ public class MiniTriangle implements MiniTriangleConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 15; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 16; i++) jj_la1[i] = -1;
     for (int i = 0; i < jj_2_rtns.length; i++) jj_2_rtns[i] = new JJCalls();
   }
 
@@ -775,7 +813,7 @@ public class MiniTriangle implements MiniTriangleConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 15; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 16; i++) jj_la1[i] = -1;
     for (int i = 0; i < jj_2_rtns.length; i++) jj_2_rtns[i] = new JJCalls();
   }
 
@@ -786,7 +824,7 @@ public class MiniTriangle implements MiniTriangleConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 15; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 16; i++) jj_la1[i] = -1;
     for (int i = 0; i < jj_2_rtns.length; i++) jj_2_rtns[i] = new JJCalls();
   }
 
@@ -797,7 +835,7 @@ public class MiniTriangle implements MiniTriangleConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 15; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 16; i++) jj_la1[i] = -1;
     for (int i = 0; i < jj_2_rtns.length; i++) jj_2_rtns[i] = new JJCalls();
   }
 
@@ -807,7 +845,7 @@ public class MiniTriangle implements MiniTriangleConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 15; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 16; i++) jj_la1[i] = -1;
     for (int i = 0; i < jj_2_rtns.length; i++) jj_2_rtns[i] = new JJCalls();
   }
 
@@ -817,7 +855,7 @@ public class MiniTriangle implements MiniTriangleConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 15; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 16; i++) jj_la1[i] = -1;
     for (int i = 0; i < jj_2_rtns.length; i++) jj_2_rtns[i] = new JJCalls();
   }
 
@@ -932,12 +970,12 @@ public class MiniTriangle implements MiniTriangleConstants {
   /** Generate ParseException. */
   public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[36];
+    boolean[] la1tokens = new boolean[40];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
     }
-    for (int i = 0; i < 15; i++) {
+    for (int i = 0; i < 16; i++) {
       if (jj_la1[i] == jj_gen) {
         for (int j = 0; j < 32; j++) {
           if ((jj_la1_0[i] & (1<<j)) != 0) {
@@ -949,7 +987,7 @@ public class MiniTriangle implements MiniTriangleConstants {
         }
       }
     }
-    for (int i = 0; i < 36; i++) {
+    for (int i = 0; i < 40; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;

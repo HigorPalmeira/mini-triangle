@@ -35,41 +35,49 @@ public interface MiniTriangleConstants {
   /** RegularExpression Id. */
   int WHILE = 17;
   /** RegularExpression Id. */
-  int LPAREN = 18;
+  int INTEGER = 18;
   /** RegularExpression Id. */
-  int RPAREN = 19;
+  int STRING = 19;
   /** RegularExpression Id. */
-  int SEMICOLON = 20;
+  int FLOAT = 20;
   /** RegularExpression Id. */
-  int COMMA = 21;
+  int BOOLEAN = 21;
   /** RegularExpression Id. */
-  int SLASH = 22;
+  int LPAREN = 22;
   /** RegularExpression Id. */
-  int LT = 23;
+  int RPAREN = 23;
   /** RegularExpression Id. */
-  int GT = 24;
+  int SEMICOLON = 24;
   /** RegularExpression Id. */
-  int COLON = 25;
+  int COMMA = 25;
   /** RegularExpression Id. */
-  int PLUS = 26;
+  int SLASH = 26;
   /** RegularExpression Id. */
-  int ASSIGN = 27;
+  int LT = 27;
   /** RegularExpression Id. */
-  int TILDE = 28;
+  int GT = 28;
   /** RegularExpression Id. */
-  int MINUS = 29;
+  int COLON = 29;
   /** RegularExpression Id. */
-  int EQ = 30;
+  int PLUS = 30;
   /** RegularExpression Id. */
-  int STAR = 31;
+  int ASSIGN = 31;
   /** RegularExpression Id. */
-  int BSLASH = 32;
+  int TILDE = 32;
   /** RegularExpression Id. */
-  int IDENTIFIER = 33;
+  int MINUS = 33;
   /** RegularExpression Id. */
-  int DIGIT = 34;
+  int EQ = 34;
   /** RegularExpression Id. */
-  int LETTER = 35;
+  int STAR = 35;
+  /** RegularExpression Id. */
+  int BSLASH = 36;
+  /** RegularExpression Id. */
+  int IDENTIFIER = 37;
+  /** RegularExpression Id. */
+  int DIGIT = 38;
+  /** RegularExpression Id. */
+  int LETTER = 39;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -94,6 +102,10 @@ public interface MiniTriangleConstants {
     "\"then\"",
     "\"var\"",
     "\"while\"",
+    "<INTEGER>",
+    "<STRING>",
+    "\"float\"",
+    "<BOOLEAN>",
     "\"(\"",
     "\")\"",
     "\";\"",
