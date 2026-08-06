@@ -130,13 +130,13 @@ public class MiniTriangle {
 		
 		try {
 
-		  	bw = new BufferedWriter(new FileWriter(CAMINHO_ARQUIVO, true));
+		  	bw = new BufferedWriter(new FileWriter(CAMINHO_ARQUIVO, false));
 
 			// titulo
 			bw.write("RESULTADOS DO PARSER");
 			bw.newLine();
 
-			//
+			// regras de produção
 			bw.write("Possui todas as regras de produção: " + possuiTodasAsProducoes());
 			bw.newLine();
 			bw.write("\tTem 'Command': " + booleanParaSimNao(temCommand));
@@ -144,6 +144,18 @@ public class MiniTriangle {
 			bw.write("\tTem 'Single Command': " + booleanParaSimNao(temSingleCommand));
 			bw.newLine();
 			bw.write("\tTem 'Expression': " + booleanParaSimNao(temExpression));
+			bw.newLine();
+			bw.write("\tTem 'Primary Expression': " + booleanParaSimNao(temPrimaryExpression));
+			bw.newLine();
+			bw.write("\tTem 'Declaration': " + booleanParaSimNao(temDeclaration));
+			bw.newLine();
+			bw.write("\tTem 'Single Declaration': " + booleanParaSimNao(temSingleDeclaration));
+			bw.newLine();
+			bw.write("\tTem 'Type Denoter': " + booleanParaSimNao(temTypeDenoter));
+			bw.newLine();
+			bw.write("\tTem 'Integer Literal': " + booleanParaSimNao(temIntegerLiteral));
+			bw.newLine();
+			bw.write("\tTem 'Operator': " + booleanParaSimNao(temOperator));
 			bw.newLine();
 			
 		} catch (IOException ex) {
@@ -171,6 +183,10 @@ SKIP : {
     " " | "\t" | "\n" | "\r"
 }
 
+// COMENTÁRIO
+SPECIAL_TOKEN : {
+	< SINGLE_LINE_COMMENT : "!" (~["\n", "\r"])* ("\n" | "\r" | "\r\n")? >
+}
 
 // TERMINAIS
 TOKEN : {
@@ -344,8 +360,9 @@ void SingleCommand() : {
 					listaIdentificadores.add(token.image);
 		    	}
 	    }
-    		AssignmentOperator() Expression()
-		    {
+	    
+    	AssignmentOperator() Expression()
+			{
 		      	temExpression = true;
 		      	contadorExpression++;
 		    }
@@ -484,7 +501,7 @@ void PrimaryExpression() : {
 	          	contadorIntegerLiteral++;
 	        }
         | token = <IDENTIFIER>
-		{
+			{
 		    	contadorIdentificadores++;
 		
 		    	if (!listaIdentificadores.contains(token.image)) {
@@ -622,13 +639,45 @@ void AssignmentOperator() : { }
 void Operator() : {
 } 
 {
-    <LT> { contadorOperator++; }
-    | <GT> { contadorOperator++; }
-    | <EQ> { contadorOperator++; }
-    | <PLUS> { contadorOperator++; }
-    | <MINUS> { contadorOperator++; }
-    | <STAR> { contadorOperator++; }
-    | <SLASH> { contadorOperator++; }
-    | <BSLASH> { contadorOperator++; }
+    <LT>
+    	{
+    		contadorOperator++;
+    		temOperator = true;
+    	}
+    | <GT>
+    	{
+    		contadorOperator++;
+    		temOperator = true;
+    	}
+    | <EQ>
+    	{
+    		contadorOperator++;
+    		temOperator = true;
+    	}
+    | <PLUS>
+    	{
+    		contadorOperator++;
+    		temOperator = true;
+    	}
+    | <MINUS>
+    	{
+    		contadorOperator++;
+    		temOperator = true;
+    	}
+    | <STAR>
+    	{
+    		contadorOperator++;
+    		temOperator = true;
+    	}
+    | <SLASH>
+    	{
+    		contadorOperator++;
+    		temOperator = true;
+    	}
+    | <BSLASH>
+    	{
+    		contadorOperator++;
+    		temOperator = true;
+    	}
 
 }

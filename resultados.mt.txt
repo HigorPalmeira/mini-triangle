@@ -1,0 +1,11 @@
+RESULTADOS DO PARSER
+Possui todas as regras de produção: true
+	Tem 'Command': Sim
+	Tem 'Single Command': Sim
+	Tem 'Expression': Sim
+	Tem 'Primary Expression': Sim
+	Tem 'Declaration': Sim
+	Tem 'Single Declaration': Sim
+	Tem 'Type Denoter': Sim
+	Tem 'Integer Literal': Sim
+	Tem 'Operator': Sim

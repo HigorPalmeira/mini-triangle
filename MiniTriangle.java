@@ -123,13 +123,13 @@ public class MiniTriangle implements MiniTriangleConstants {
 
                 try {
 
-                        bw = new BufferedWriter(new FileWriter(CAMINHO_ARQUIVO, true));
+                        bw = new BufferedWriter(new FileWriter(CAMINHO_ARQUIVO, false));
 
                         // titulo
                         bw.write("RESULTADOS DO PARSER");
                         bw.newLine();
 
-                        //
+                        // regras de produção
                         bw.write("Possui todas as regras de produ\u00e7\u00e3o: " + possuiTodasAsProducoes());
                         bw.newLine();
                         bw.write("\tTem 'Command': " + booleanParaSimNao(temCommand));
@@ -137,6 +137,18 @@ public class MiniTriangle implements MiniTriangleConstants {
                         bw.write("\tTem 'Single Command': " + booleanParaSimNao(temSingleCommand));
                         bw.newLine();
                         bw.write("\tTem 'Expression': " + booleanParaSimNao(temExpression));
+                        bw.newLine();
+                        bw.write("\tTem 'Primary Expression': " + booleanParaSimNao(temPrimaryExpression));
+                        bw.newLine();
+                        bw.write("\tTem 'Declaration': " + booleanParaSimNao(temDeclaration));
+                        bw.newLine();
+                        bw.write("\tTem 'Single Declaration': " + booleanParaSimNao(temSingleDeclaration));
+                        bw.newLine();
+                        bw.write("\tTem 'Type Denoter': " + booleanParaSimNao(temTypeDenoter));
+                        bw.newLine();
+                        bw.write("\tTem 'Integer Literal': " + booleanParaSimNao(temIntegerLiteral));
+                        bw.newLine();
+                        bw.write("\tTem 'Operator': " + booleanParaSimNao(temOperator));
                         bw.newLine();
 
                 } catch (IOException ex) {
@@ -628,35 +640,43 @@ public class MiniTriangle implements MiniTriangleConstants {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case LT:
       jj_consume_token(LT);
-           contadorOperator++;
+                contadorOperator++;
+                temOperator = true;
       break;
     case GT:
       jj_consume_token(GT);
-             contadorOperator++;
+                contadorOperator++;
+                temOperator = true;
       break;
     case EQ:
       jj_consume_token(EQ);
-             contadorOperator++;
+                contadorOperator++;
+                temOperator = true;
       break;
     case PLUS:
       jj_consume_token(PLUS);
-               contadorOperator++;
+                contadorOperator++;
+                temOperator = true;
       break;
     case MINUS:
       jj_consume_token(MINUS);
                 contadorOperator++;
+                temOperator = true;
       break;
     case STAR:
       jj_consume_token(STAR);
-               contadorOperator++;
+                contadorOperator++;
+                temOperator = true;
       break;
     case SLASH:
       jj_consume_token(SLASH);
                 contadorOperator++;
+                temOperator = true;
       break;
     case BSLASH:
       jj_consume_token(BSLASH);
-                 contadorOperator++;
+                contadorOperator++;
+                temOperator = true;
       break;
     default:
       jj_la1[14] = jj_gen;
@@ -672,6 +692,17 @@ public class MiniTriangle implements MiniTriangleConstants {
     finally { jj_save(0, xla); }
   }
 
+  private boolean jj_3_1() {
+    if (jj_scan_token(IDENTIFIER)) return true;
+    if (jj_3R_8()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_10() {
+    if (jj_scan_token(TILDE)) return true;
+    return false;
+  }
+
   private boolean jj_3R_9() {
     if (jj_scan_token(ASSIGN)) return true;
     return false;
@@ -684,17 +715,6 @@ public class MiniTriangle implements MiniTriangleConstants {
     jj_scanpos = xsp;
     if (jj_3R_10()) return true;
     }
-    return false;
-  }
-
-  private boolean jj_3_1() {
-    if (jj_scan_token(IDENTIFIER)) return true;
-    if (jj_3R_8()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_10() {
-    if (jj_scan_token(TILDE)) return true;
     return false;
   }
 
@@ -720,10 +740,10 @@ public class MiniTriangle implements MiniTriangleConstants {
       jj_la1_init_1();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {0x20,0x80000,0x100000,0xf2e20000,0x13040,0xf2e00000,0xf2e00000,0xf2e20000,0xf2e00000,0x0,0x80000,0x8080,0x0,0xc000000,0xf2e00000,};
+      jj_la1_0 = new int[] {0x40,0x100000,0x200000,0xe5c40000,0x26080,0xe5c00000,0xe5c00000,0xe5c40000,0xe5c00000,0x0,0x100000,0x10100,0x0,0x18000000,0xe5c00000,};
    }
    private static void jj_la1_init_1() {
-      jj_la1_1 = new int[] {0x0,0x0,0x0,0x3,0x1,0x0,0x0,0x3,0x0,0x3,0x0,0x0,0x2,0x0,0x0,};
+      jj_la1_1 = new int[] {0x0,0x0,0x0,0x7,0x2,0x1,0x1,0x7,0x1,0x6,0x0,0x0,0x4,0x0,0x1,};
    }
   final private JJCalls[] jj_2_rtns = new JJCalls[1];
   private boolean jj_rescan = false;
@@ -912,7 +932,7 @@ public class MiniTriangle implements MiniTriangleConstants {
   /** Generate ParseException. */
   public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[35];
+    boolean[] la1tokens = new boolean[36];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
@@ -929,7 +949,7 @@ public class MiniTriangle implements MiniTriangleConstants {
         }
       }
     }
-    for (int i = 0; i < 35; i++) {
+    for (int i = 0; i < 36; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;

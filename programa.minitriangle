@@ -1,16 +1,17 @@
 program TesteBeta
+! declaracao de variaveis
 let
-const pi ~ 3;
-var idade : int;
-var ano : int;
-var nome : string
+	const pi ~ 3;
+	var idade : int;
+	var ano : int;
+	var nome : string;
+	var somaIdades : int
 in
 
 begin
-
 	ano := 2026;
 
-	escreva(mensagem1, mensagem2);
+	escreva(mensagem1, );
 	leia(idade);
 
 	escreva(mensagem1, mensagem2);

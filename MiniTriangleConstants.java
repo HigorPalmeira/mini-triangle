@@ -9,65 +9,67 @@ public interface MiniTriangleConstants {
   /** End of File. */
   int EOF = 0;
   /** RegularExpression Id. */
-  int PROGRAM = 5;
+  int SINGLE_LINE_COMMENT = 5;
   /** RegularExpression Id. */
-  int BEGIN = 6;
+  int PROGRAM = 6;
   /** RegularExpression Id. */
-  int CONST = 7;
+  int BEGIN = 7;
   /** RegularExpression Id. */
-  int DO = 8;
+  int CONST = 8;
   /** RegularExpression Id. */
-  int ELSE = 9;
+  int DO = 9;
   /** RegularExpression Id. */
-  int END = 10;
+  int ELSE = 10;
   /** RegularExpression Id. */
-  int IN = 11;
+  int END = 11;
   /** RegularExpression Id. */
-  int LET = 12;
+  int IN = 12;
   /** RegularExpression Id. */
-  int IF = 13;
+  int LET = 13;
   /** RegularExpression Id. */
-  int THEN = 14;
+  int IF = 14;
   /** RegularExpression Id. */
-  int VAR = 15;
+  int THEN = 15;
   /** RegularExpression Id. */
-  int WHILE = 16;
+  int VAR = 16;
   /** RegularExpression Id. */
-  int LPAREN = 17;
+  int WHILE = 17;
   /** RegularExpression Id. */
-  int RPAREN = 18;
+  int LPAREN = 18;
   /** RegularExpression Id. */
-  int SEMICOLON = 19;
+  int RPAREN = 19;
   /** RegularExpression Id. */
-  int COMMA = 20;
+  int SEMICOLON = 20;
   /** RegularExpression Id. */
-  int SLASH = 21;
+  int COMMA = 21;
   /** RegularExpression Id. */
-  int LT = 22;
+  int SLASH = 22;
   /** RegularExpression Id. */
-  int GT = 23;
+  int LT = 23;
   /** RegularExpression Id. */
-  int COLON = 24;
+  int GT = 24;
   /** RegularExpression Id. */
-  int PLUS = 25;
+  int COLON = 25;
   /** RegularExpression Id. */
-  int ASSIGN = 26;
+  int PLUS = 26;
   /** RegularExpression Id. */
-  int TILDE = 27;
+  int ASSIGN = 27;
   /** RegularExpression Id. */
-  int MINUS = 28;
+  int TILDE = 28;
   /** RegularExpression Id. */
-  int EQ = 29;
+  int MINUS = 29;
   /** RegularExpression Id. */
-  int STAR = 30;
+  int EQ = 30;
   /** RegularExpression Id. */
-  int BSLASH = 31;
+  int STAR = 31;
   /** RegularExpression Id. */
-  int IDENTIFIER = 32;
+  int BSLASH = 32;
   /** RegularExpression Id. */
-  int DIGIT = 33;
+  int IDENTIFIER = 33;
   /** RegularExpression Id. */
-  int LETTER = 34;
+  int DIGIT = 34;
+  /** RegularExpression Id. */
+  int LETTER = 35;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -79,6 +81,7 @@ public interface MiniTriangleConstants {
     "\"\\t\"",
     "\"\\n\"",
     "\"\\r\"",
+    "<SINGLE_LINE_COMMENT>",
     "\"program\"",
     "\"begin\"",
     "\"const\"",
