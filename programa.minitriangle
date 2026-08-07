@@ -5,13 +5,15 @@ let
 	var idade : int;
 	var ano : int;
 	var nome : string;
-	var somaIdades : int
+	var somaIdades : int;
+	var peso : float;
+	var sim : bool
 in
 
 begin
 	ano := 2026;
 
-	escreva(mensagem1, );
+	escreva(mensagem1, mensagem2);
 	leia(idade);
 
 	escreva(mensagem1, mensagem2);

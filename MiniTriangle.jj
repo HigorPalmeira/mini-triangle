@@ -204,6 +204,14 @@ TOKEN : {
     | < WHILE : "while" >
 }
 
+// TIPOS DE DADOS
+TOKEN : {
+	< INTEGER : "int" | "integer">
+	| < STRING : "str" | "string" >
+	| < FLOAT : "float" >
+	| < BOOLEAN : "bool" | "boolean" >
+}
+
 // SEPARADORES
 TOKEN : {
     < LPAREN : "(">
@@ -227,6 +235,8 @@ TOKEN : {
     | < BSLASH : "\\" >
 }
 
+
+// GERAIS
 TOKEN : {
     < IDENTIFIER : (["a"-"z", "A"-"Z"])+ (["a"-"z", "A"-"Z", "0"-"9"])*
 //    <LETTER> ( <LETTER> )*
@@ -237,6 +247,8 @@ TOKEN : {
 	>
     | < LETTER : (["a"-"z", "A"-"Z"])+>
 }
+
+
 
 // INÍCIO
 void Iniciar() : {}
@@ -570,7 +582,9 @@ void SingleDeclaration() : {
 		    	if (!listaIdentificadores.contains(token.image)) {
 					listaIdentificadores.add(token.image);
 		    	}
-	    } TypeAnnotation() tipoVar = TypeDenoter()
+	    }
+
+	    TypeAnnotation() tipoVar = TypeDenoter()
 		    {
 		      	temTypeDenoter = true;
 			    	contadorTypeDenoter++;
@@ -599,7 +613,7 @@ String TypeDenoter() : {
 	Token token;
 }
 {
-  	token = <IDENTIFIER>
+  	token = <INTEGER> // <IDENTIFIER>
 	  	{
 	  	 	contadorIdentificadores++;
 	
@@ -609,6 +623,40 @@ String TypeDenoter() : {
 	
 	  	 	return token.image;
 	  	}
+
+	| token = <STRING>
+		{
+	  	 	contadorIdentificadores++;
+	
+	  	 	if (!listaIdentificadores.contains(token.image)) {
+				listaIdentificadores.add(token.image);
+	  	 	}
+	
+	  	 	return token.image;
+	  	}
+
+	| token = <FLOAT>
+		{
+	  	 	contadorIdentificadores++;
+	
+	  	 	if (!listaIdentificadores.contains(token.image)) {
+				listaIdentificadores.add(token.image);
+	  	 	}
+	
+	  	 	return token.image;
+	  	}
+
+	| token = <BOOLEAN>
+		{
+	  	 	contadorIdentificadores++;
+	
+	  	 	if (!listaIdentificadores.contains(token.image)) {
+				listaIdentificadores.add(token.image);
+	  	 	}
+	
+	  	 	return token.image;
+	  	}
+		
 }
 
 
