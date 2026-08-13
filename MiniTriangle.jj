@@ -1,4 +1,9 @@
 
+/*
+	Especificação da Mini-Triangle
+	Alunos: Gabriel Alves; Higor Palmeira
+*/
+
 options {
     STATIC = false;
 }
@@ -34,7 +39,6 @@ public class MiniTriangle {
   public int contadorIntegerLiteral = 0;
   
   public int contadorOperator = 0;
-  public List<String > listaOperators = new ArrayList<String>();
   public int contadorAssignmentOperator = 0;
   public int contadorTypeAnnotation = 0;
   
@@ -124,6 +128,42 @@ public class MiniTriangle {
 		return expressao ? "Sim" : "Não";
     }
 
+    public void exibirResultados() {
+
+      	System.out.println("Possui todas as regras de produção: " + booleanParaSimNao(possuiTodasAsProducoes()));
+		System.out.println("Inicia com 'Program': " + booleanParaSimNao(contadorProgram == 1));
+
+		System.out.println("Quantidade de 'Command': " + contadorCommand);
+		System.out.println("Quantidade de 'SingleCommand': " + contadorSingleCommand);
+		System.out.println("Quantidade de 'Expression': " + contadorExpression);
+		System.out.println("Quantidade de 'PrimaryExpression': " + contadorPrimaryExpression);
+		System.out.println("Quantidade de 'Declaration': " + contadorDeclaration);
+		System.out.println("Quantidade de 'SingleDeclaration': " + contadorSingleDeclaration);
+		System.out.println("Quantidade de 'TypeDenoter': " + contadorTypeDenoter);
+		System.out.println("Quantidade de 'IntegerLiteral': " + contadorIntegerLiteral);
+		System.out.println("Quantidade de 'Operator': " + contadorOperator);
+
+		System.out.println("Quantidade de 'Assignment Operator': " + contadorAssignmentOperator);
+		System.out.println("Quantidade de 'Type Annotation': " + contadorTypeAnnotation);
+
+		System.out.println("Quantidade de Condicionais: " + contadorCondicionais);
+		System.out.println("Quantidade de Loops: " + contadorLoops);
+      
+		System.out.println("Identificadores: " + contadorIdentificadores);
+		System.out.println("Declarações:\n-- Const: " + contadorDeclaracoesConst + "\n-- Var: " + contadorDeclaracoesVar);
+
+		System.out.println("Quantidade de Identificadores Únicos: " + listaIdentificadores.size());
+		System.out.println("Lista de Identificadores Únicos: " + listaIdentificadores);
+
+		System.out.println("\n\nTabela de Variaveis:");
+		for (String tipo : tabelaVariaveis.keySet()) {
+			System.out.println("* " + tipo + ": ");
+
+			System.out.println(tabelaVariaveis.get(tipo));
+		}
+
+    }
+
     public void detalharResultados() {
 
 		BufferedWriter bw = null;
@@ -133,7 +173,9 @@ public class MiniTriangle {
 		  	bw = new BufferedWriter(new FileWriter(CAMINHO_ARQUIVO, false));
 
 			// titulo
+			bw.write("\n================================\n");
 			bw.write("RESULTADOS DO PARSER");
+			bw.write("\n================================\n");
 			bw.newLine();
 
 			// regras de produção
@@ -157,6 +199,56 @@ public class MiniTriangle {
 			bw.newLine();
 			bw.write("\tTem 'Operator': " + booleanParaSimNao(temOperator));
 			bw.newLine();
+
+			bw.newLine();
+			bw.write("\n================================\n");
+			bw.write("Quantificadores:");
+			bw.newLine();
+			bw.write("\tQuantidade de 'Assignment Operator': " + contadorAssignmentOperator);
+			bw.newLine();
+			bw.write("\tQuantidade de 'Type Annotation': " + contadorTypeAnnotation);
+			bw.newLine();
+			bw.write("\tQuantidade de 'Expressões Condicionais': " + contadorCondicionais);
+			bw.newLine();
+			bw.write("\tQuantidade de 'Loops': " + contadorLoops);
+			bw.newLine();
+			bw.write("\t Quantidade de 'Declarações Const': " + contadorDeclaracoesConst);
+			bw.newLine();
+			bw.write("\tQuantidade de 'Declarações Var': " + contadorDeclaracoesVar);
+			bw.newLine();
+			bw.write("\tQuantidade de 'Identificadores' (Aparições): " + contadorIdentificadores);
+			bw.newLine();
+			bw.write("\tQuantidade de 'Identificadores' (Únicos): " + listaIdentificadores.size());
+			bw.newLine();
+			bw.write("\n================================\n");
+
+			bw.newLine();
+			bw.write("\n================================\n");
+			bw.write("Lista de Identificadores Únicos:");
+			bw.newLine();
+			for (String identificador : listaIdentificadores) {
+				bw.write("+ " + identificador);
+				bw.newLine();
+			}
+			bw.newLine();
+			bw.write("\n================================\n");
+
+			bw.newLine();
+			bw.write("\n================================\n");
+			bw.write("Tabela de Variaveis:");
+			bw.newLine();
+
+			for (String tipo : tabelaVariaveis.keySet()) {
+				bw.write("* " + tipo + ": ");
+				bw.newLine();
+
+				for (String variavel : tabelaVariaveis.get(tipo)) {
+					bw.write("\t" + variavel);
+					bw.newLine();
+				}
+			}
+			bw.newLine();
+			bw.write("\n================================\n");
 			
 		} catch (IOException ex) {
 			System.err.println("\nErro na escrita do arquivo: " + ex.getMessage());
@@ -257,41 +349,9 @@ void Iniciar() : {}
 
     {
 
-		System.out.println("Possui todas as regras de produção: " + (possuiTodasAsProducoes() ? "Sim" : "Não"));
-		System.out.println("Inicia com 'Program': " + (contadorProgram == 1 ? "Sim" : "Não"));
-
-		System.out.println("Quantidade de 'Command': " + contadorCommand);
-		System.out.println("Quantidade de 'SingleCommand': " + contadorSingleCommand);
-		System.out.println("Quantidade de 'Expression': " + contadorExpression);
-		System.out.println("Quantidade de 'PrimaryExpression': " + contadorPrimaryExpression);
-		System.out.println("Quantidade de 'Declaration': " + contadorDeclaration);
-		System.out.println("Quantidade de 'SingleDeclaration': " + contadorSingleDeclaration);
-		System.out.println("Quantidade de 'TypeDenoter': " + contadorTypeDenoter);
-		System.out.println("Quantidade de 'IntegerLiteral': " + contadorIntegerLiteral);
-		System.out.println("Quantidade de 'Operator': " + contadorOperator);
-
-		System.out.println("Lista de Operadores: " + listaOperators);
-
-		System.out.println("Quantidade de 'Assignment Operator': " + contadorAssignmentOperator);
-		System.out.println("Quantidade de 'Type Annotation': " + contadorTypeAnnotation);
-
-		System.out.println("Quantidade de Condicionais: " + contadorCondicionais);
-		System.out.println("Quantidade de Loops: " + contadorLoops);
-      
-		System.out.println("Identificadores: " + contadorIdentificadores);
-		System.out.println("Declarações:\n-- Const: " + contadorDeclaracoesConst + "\n-- Var: " + contadorDeclaracoesVar);
-
-		System.out.println("Quantidade de Identificadores Únicos: " + listaIdentificadores.size());
-		System.out.println("Lista de Identificadores Únicos: " + listaIdentificadores);
-
-		System.out.println("\n\nTabela de Variaveis:");
-		for (String tipo : tabelaVariaveis.keySet()) {
-			System.out.println("* " + tipo + ": ");
-
-			System.out.println(tabelaVariaveis.get(tipo));
-		}
-
+		exibirResultados();
 		detalharResultados();
+		
     }
 }
 
