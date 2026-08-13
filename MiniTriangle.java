@@ -27,7 +27,6 @@ public class MiniTriangle implements MiniTriangleConstants {
   public int contadorIntegerLiteral = 0;
 
   public int contadorOperator = 0;
-  public List<String > listaOperators = new ArrayList<String>();
   public int contadorAssignmentOperator = 0;
   public int contadorTypeAnnotation = 0;
 
@@ -117,6 +116,42 @@ public class MiniTriangle implements MiniTriangleConstants {
                 return expressao ? "Sim" : "N\u00e3o";
     }
 
+    public void exibirResultados() {
+
+        System.out.println("Possui todas as regras de produ\u00e7\u00e3o: " + booleanParaSimNao(possuiTodasAsProducoes()));
+                System.out.println("Inicia com 'Program': " + booleanParaSimNao(contadorProgram == 1));
+
+                System.out.println("Quantidade de 'Command': " + contadorCommand);
+                System.out.println("Quantidade de 'SingleCommand': " + contadorSingleCommand);
+                System.out.println("Quantidade de 'Expression': " + contadorExpression);
+                System.out.println("Quantidade de 'PrimaryExpression': " + contadorPrimaryExpression);
+                System.out.println("Quantidade de 'Declaration': " + contadorDeclaration);
+                System.out.println("Quantidade de 'SingleDeclaration': " + contadorSingleDeclaration);
+                System.out.println("Quantidade de 'TypeDenoter': " + contadorTypeDenoter);
+                System.out.println("Quantidade de 'IntegerLiteral': " + contadorIntegerLiteral);
+                System.out.println("Quantidade de 'Operator': " + contadorOperator);
+
+                System.out.println("Quantidade de 'Assignment Operator': " + contadorAssignmentOperator);
+                System.out.println("Quantidade de 'Type Annotation': " + contadorTypeAnnotation);
+
+                System.out.println("Quantidade de Condicionais: " + contadorCondicionais);
+                System.out.println("Quantidade de Loops: " + contadorLoops);
+
+                System.out.println("Identificadores: " + contadorIdentificadores);
+                System.out.println("Declara\u00e7\u00f5es:\n-- Const: " + contadorDeclaracoesConst + "\n-- Var: " + contadorDeclaracoesVar);
+
+                System.out.println("Quantidade de Identificadores \u00danicos: " + listaIdentificadores.size());
+                System.out.println("Lista de Identificadores \u00danicos: " + listaIdentificadores);
+
+                System.out.println("\n\nTabela de Variaveis:");
+                for (String tipo : tabelaVariaveis.keySet()) {
+                        System.out.println("* " + tipo + ": ");
+
+                        System.out.println(tabelaVariaveis.get(tipo));
+                }
+
+    }
+
     public void detalharResultados() {
 
                 BufferedWriter bw = null;
@@ -126,7 +161,9 @@ public class MiniTriangle implements MiniTriangleConstants {
                         bw = new BufferedWriter(new FileWriter(CAMINHO_ARQUIVO, false));
 
                         // titulo
+                        bw.write("\n================================\n");
                         bw.write("RESULTADOS DO PARSER");
+                        bw.write("\n================================\n");
                         bw.newLine();
 
                         // regras de produção
@@ -151,6 +188,60 @@ public class MiniTriangle implements MiniTriangleConstants {
                         bw.write("\tTem 'Operator': " + booleanParaSimNao(temOperator));
                         bw.newLine();
 
+                        bw.newLine();
+                        bw.write("\n================================\n");
+                        bw.write("Quantificadores:");
+                        bw.newLine();
+                        bw.write("\tQuantidade de 'Assignment Operator': " + contadorAssignmentOperator);
+                        bw.newLine();
+                        bw.write("\tQuantidade de 'Type Annotation': " + contadorTypeAnnotation);
+                        bw.newLine();
+                        bw.write("\tQuantidade de 'Express\u00f5es Condicionais': " + contadorCondicionais);
+                        bw.newLine();
+                        bw.write("\tQuantidade de 'Loops': " + contadorLoops);
+                        bw.newLine();
+                        bw.write("\t Quantidade de 'Declara\u00e7\u00f5es Const': " + contadorDeclaracoesConst);
+                        bw.newLine();
+                        bw.write("\tQuantidade de 'Declara\u00e7\u00f5es Var': " + contadorDeclaracoesVar);
+                        bw.newLine();
+                        bw.write("\tQuantidade de 'Identificadores' (Apari\u00e7\u00f5es): " + contadorIdentificadores);
+                        bw.newLine();
+                        bw.write("\tQuantidade de 'Identificadores' (\u00danicos): " + listaIdentificadores.size());
+                        bw.newLine();
+                        bw.write("\n================================\n");
+
+                        bw.newLine();
+                        bw.write("\n================================\n");
+                        bw.write("Lista de Identificadores \u00danicos:");
+                        bw.newLine();
+                        // bw.write(listaIdentificadores);
+                        for (String identificador : listaIdentificadores) {
+                                bw.write("+ " + identificador);
+                                bw.newLine();
+                        }
+                        bw.newLine();
+                        bw.write("\n================================\n");
+
+                        bw.newLine();
+                        bw.write("\n================================\n");
+                        bw.write("Tabela de Variaveis:");
+                        bw.newLine();
+
+                        for (String tipo : tabelaVariaveis.keySet()) {
+                                bw.write("* " + tipo + ": ");
+                                bw.newLine();
+
+//				bw.write(tabelaVariaveis.get(tipo));
+        //			bw.newLine();
+
+                                for (String variavel : tabelaVariaveis.get(tipo)) {
+                                        bw.write("\t" + variavel);
+                                        bw.newLine();
+                                }
+                        }
+                        bw.newLine();
+                        bw.write("\n================================\n");
+
                 } catch (IOException ex) {
                         System.err.println("\nErro na escrita do arquivo: " + ex.getMessage());
                 } finally {
@@ -168,40 +259,7 @@ public class MiniTriangle implements MiniTriangleConstants {
 // INÍCIO
   final public void Iniciar() throws ParseException {
     Program();
-                System.out.println("Possui todas as regras de produ\u00e7\u00e3o: " + (possuiTodasAsProducoes() ? "Sim" : "N\u00e3o"));
-                System.out.println("Inicia com 'Program': " + (contadorProgram == 1 ? "Sim" : "N\u00e3o"));
-
-                System.out.println("Quantidade de 'Command': " + contadorCommand);
-                System.out.println("Quantidade de 'SingleCommand': " + contadorSingleCommand);
-                System.out.println("Quantidade de 'Expression': " + contadorExpression);
-                System.out.println("Quantidade de 'PrimaryExpression': " + contadorPrimaryExpression);
-                System.out.println("Quantidade de 'Declaration': " + contadorDeclaration);
-                System.out.println("Quantidade de 'SingleDeclaration': " + contadorSingleDeclaration);
-                System.out.println("Quantidade de 'TypeDenoter': " + contadorTypeDenoter);
-                System.out.println("Quantidade de 'IntegerLiteral': " + contadorIntegerLiteral);
-                System.out.println("Quantidade de 'Operator': " + contadorOperator);
-
-                System.out.println("Lista de Operadores: " + listaOperators);
-
-                System.out.println("Quantidade de 'Assignment Operator': " + contadorAssignmentOperator);
-                System.out.println("Quantidade de 'Type Annotation': " + contadorTypeAnnotation);
-
-                System.out.println("Quantidade de Condicionais: " + contadorCondicionais);
-                System.out.println("Quantidade de Loops: " + contadorLoops);
-
-                System.out.println("Identificadores: " + contadorIdentificadores);
-                System.out.println("Declara\u00e7\u00f5es:\n-- Const: " + contadorDeclaracoesConst + "\n-- Var: " + contadorDeclaracoesVar);
-
-                System.out.println("Quantidade de Identificadores \u00danicos: " + listaIdentificadores.size());
-                System.out.println("Lista de Identificadores \u00danicos: " + listaIdentificadores);
-
-                System.out.println("\n\nTabela de Variaveis:");
-                for (String tipo : tabelaVariaveis.keySet()) {
-                        System.out.println("* " + tipo + ": ");
-
-                        System.out.println(tabelaVariaveis.get(tipo));
-                }
-
+                exibirResultados();
                 detalharResultados();
   }
 

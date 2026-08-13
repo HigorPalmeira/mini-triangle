@@ -1,5 +1,9 @@
+
+================================
 RESULTADOS DO PARSER
-Possui todas as regras de produção: false
+================================
+
+Possui todas as regras de produção: true
 	Tem 'Command': Sim
 	Tem 'Single Command': Sim
 	Tem 'Expression': Sim
@@ -9,3 +13,60 @@ Possui todas as regras de produção: false
 	Tem 'Type Denoter': Sim
 	Tem 'Integer Literal': Sim
 	Tem 'Operator': Sim
+
+
+================================
+Quantificadores:
+	Quantidade de 'Assignment Operator': 2
+	Quantidade de 'Type Annotation': 6
+	Quantidade de 'Expressões Condicionais': 1
+	Quantidade de 'Loops': 2
+	 Quantidade de 'Declarações Const': 1
+	Quantidade de 'Declarações Var': 6
+	Quantidade de 'Identificadores' (Aparições): 35
+	Quantidade de 'Identificadores' (Únicos): 19
+
+================================
+
+
+================================
+Lista de Identificadores Únicos:
++ TesteBeta
++ pi
++ idade
++ int
++ ano
++ nome
++ string
++ somaIdades
++ peso
++ float
++ sim
++ bool
++ escreva
++ mensagem1
++ mensagem2
++ leia
++ executar
++ nao
++ nada
+
+
+================================
+
+
+================================
+Tabela de Variaveis:
+* string: 
+	nome
+* bool: 
+	sim
+* float: 
+	peso
+* int: 
+	idade
+	ano
+	somaIdades
+
+
+================================
