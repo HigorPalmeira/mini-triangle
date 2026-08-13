@@ -1,5 +1,5 @@
 RESULTADOS DO PARSER
-Possui todas as regras de produção: true
+Possui todas as regras de produção: false
 	Tem 'Command': Sim
 	Tem 'Single Command': Sim
 	Tem 'Expression': Sim

@@ -20,17 +20,15 @@ begin
 	leia (ano);
 
 	if (ano - idade > 2000) then
-		begin
 		escreva(mensagem1)
-	end
 	else
-	escreva(mensagem2);
+		escreva(mensagem2);
 
 	while sim do
 	begin 
 		executar();
 		while nao do
-		nada()
+			nada()
 	end
 
 end

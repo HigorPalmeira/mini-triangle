@@ -1,0 +1,22 @@
+let
+    const limite ~ 100;
+    const incremento ~ 1;
+    var contador : int;
+    var mensagem : string;
+    var finalizado : int
+in
+    begin
+        contador := 0;
+        finalizado := -1;
+        
+        while contador < limite do
+            begin
+                contador := contador + incremento;
+                processar(contador, limite)
+            end;
+            
+        if contador = limite then
+            imprimir(mensagem, 1)
+        else
+            imprimir(mensagem, 0)
+    end
